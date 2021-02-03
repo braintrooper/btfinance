@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <h2>Log in</h2>
+    <br>
+    <form action="/login" method="post">
+
+        <div class="col-auto">
+            <label style="color: #0dcaf0">Username</label><br>
+                <input autocomplete="off" autofocus class="form-control" name="username"  type="text">
+        </div>
+<br>
+
+        <div class="col-auto">
+            <label style="color: blueviolet">Password</label><br>
+            <input id="pass" class="form-control" name="password" type="password">
+        </div>
+        <br>
+        <button id="submit" class="btn btn-primary" type="submit">Log In</button>
+    </form>
+    <br>
+New user? <a href="/register">Create an account<a>
+    <script>
+    // password validation, you can submit only if the pass is at least 8 characters and contains only alphanumeric characters
+    var $input = $('#username, #pass'),
+        $register = $('#submit');
+    $register.attr('disabled', true);
+
+    $input.keyup(function() {
+        var trigger = false;
+        $input.each(function() {
+            if (!$(this).val()) {
+                trigger = true;
+            }
+        });
+        trigger ? $register.attr('disabled', true) : $register.removeAttr('disabled');
+    });
+</script>
+{% endblock %}

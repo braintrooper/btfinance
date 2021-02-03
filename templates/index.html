@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Stocks
+{% endblock %}
+
+{% block main %}
+
+<button type="button" class="btn btn-outline-primary btn-sm" onclick="hideDiv()"
+        xmlns:display="http://www.w3.org/1999/xhtml">Show my stocks</button>
+<br>
+<script>
+    function hideDiv() {
+        var x = document.getElementById("widget");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+<br>
+<div id="widget">
+    <script type="text/javascript">
+        function nC(input) {
+            return input.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+    </script>
+    <table class="table table-hover">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Symbol</th>
+            <th scope="col">Name</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for stock in stocks %}
+        <tr>
+            <th scope="row">{{ stock[0] }}</th>
+            <td>{{ stock[1] }}</td>
+            <td>{{ stock[2] }}</td>
+            <td>{{ "${:,.2f}".format(stock[3]) }}</td>
+            <td>{{ "${:,.2f}".format(stock[4]) }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <th scope="row">Cash</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{{ "${:,.2f}".format(cash_only) }}</td>
+        </tr>
+        <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="font-weight: bold">{{ "${:,.2f}".format(cash) }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+</div>
+<button type="button" class="btn btn-outline-warning btn-sm" onclick="hideDiv1()">Show Market Today</button>
+
+<script>
+    function hideDiv1() {
+        var y = document.getElementById("widget1");
+        if (y.style.display === "none") {
+            y.style.display = "block";
+        } else {
+            y.style.display = "none";
+        }
+    }
+</script>
+<!-- TradingView Widget BEGIN -->
+<div id="widget1" style="display: none;">
+    <br>
+    <div class="tradingview-widget-container" style="margin:0 auto>
+        <div class="tradingview-widget-container__widget"></div>
+        <a href="https://www.tradingview.com/markets/stocks-usa/" rel="noopener" target="_blank">
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-hotlists.js" async>
+                {
+                    "colorTheme": "light",
+                    "dateRange": "12M",
+                    "exchange": "OTC",
+                    "showChart": true,
+                    "locale": "en",
+                    "largeChartUrl": "",
+                    "isTransparent": false,
+                    "showSymbolLogo": true,
+                    "width": "1030",
+                    "height": "600",
+                    "plotLineColorGrowing": "rgba(33, 150, 243, 1)",
+                    "plotLineColorFalling": "rgba(33, 150, 243, 1)",
+                    "gridLineColor": "rgba(240, 243, 250, 1)",
+                    "scaleFontColor": "rgba(120, 123, 134, 1)",
+                    "belowLineFillColorGrowing": "rgba(33, 150, 243, 0.12)",
+                    "belowLineFillColorFalling": "rgba(33, 150, 243, 0.12)",
+                    "symbolActiveColor": "rgba(33, 150, 243, 0.12)"
+                }
+            </script>
+    <!-- TradingView Widget END -->
+</div>
+{% endblock %}

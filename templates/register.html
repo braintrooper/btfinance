@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Register
+{% endblock %}
+
+{% block main %}
+    <h2>Register</h2>
+    <br>
+    <form action="/register" method="post">
+        <div>
+            <div class="col-auto">
+                <label style="color: #0dcaf0;">Email address</label><br>
+                <input id="email" name ="email" type="email" class="form-control" placeholder="name@example.com">
+                <small class="form-text text-muted">We'll never share your email with anyone else.</small><br>
+            </div>
+            <div class="col-auto">
+                <label style="color: #0dcaf0;">Username</label><br>
+                <input id="username" autocomplete="off" autofocus class="form-control" name="username" placeholder="my_name_123" type="text">
+                <small class="form-text text-muted">It can contain underscores, numbers and letters.</small>
+            </div>
+            <br>
+            <hr>
+            <div>
+                <div class="d-inline-flex">
+                    <div class="col-auto">
+                        <label style="color: blueviolet; font-family: Montserrat">Password</label><br>
+                        <input id="password" class="form-control" name="password" type="password">
+                    </div>
+                </div>
+                <div class="d-inline-flex">
+                    <div class="col-auto">
+                        <label style="color: blueviolet">Confirm Password</label><br>
+                        <input id="c_pass" class="form-control" name="c_pass" type="password">
+                    </div>
+                </div>
+
+            </div>
+            <small class="form-text text-muted">Must be 6-20 characters long.</small>
+            <br>
+
+            <button id="submit" class="btn btn-success" type="submit">Register</button>
+        </div>
+    </form>
+
+        <br>
+Already have an account? <a href="/login">Log in<a>
+<script>
+        // '#username, #pass, #c_pass, #email'
+        // password validation, you can submit only if the pass is at least 8 characters and contains only alphanumeric characters
+        var $input = $('#username, #password, #c_pass, #email'),
+            $register = $('#submit');
+        $register.attr('disabled', true);
+
+        $input.keyup(function() {
+            var trigger = false;
+            $input.each(function() {
+                if (!$(this).val()) {
+                    trigger = true;
+                }
+            });
+            trigger ? $register.attr('disabled', true) : $register.removeAttr('disabled');
+        });
+    </script>
+{% endblock %}

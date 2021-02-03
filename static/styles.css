@@ -1,0 +1,113 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: x-large;
+}
+
+/* colors for brand */
+nav .navbar-brand .blue
+{
+    color: #1833d4;
+}
+nav .navbar-brand .red
+{
+    color: #d2322a;
+}
+nav .navbar-brand .yellow
+{
+    color: #f3c317;
+}
+nav .navbar-brand .green
+{
+    color: #1eb148;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+#loader {
+    border: 4.5px solid black;
+    border-radius: 50%;
+    border-top: 4.5px solid white;
+    width: 43px;
+    height: 43px;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.center {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.float-left-child {
+    float: left
+}
+
+
+.inline-block-child {
+    display: inline-block;
+}
+
+
+.flex-parent {
+    display: flex;
+}
+.flex-child {
+    flex: 1;
+}
+
+
+.inline-flex-parent {
+    display: inline-flex;
+}
+.btlogo{
+    font-family: 'Righteous';
+    font-weight: 100;
+    font-size: 90%;
+}
+.btfin{
+    font-family: 'Playfair Display';
+    font-weight: 400;
+}
+
+.wetaherwid{
+    width: 980px;
+}
+
+* {
+    font-family: Montserrat;
+
+}
+
+

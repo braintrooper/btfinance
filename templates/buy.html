@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <form action="/buy" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
+        </div>
+        <div class="form-group">
+            <input id="stock" class="form-control" name="number" placeholder="Number" type="number">
+        </div>
+        <button id="submit" class="btn btn-success" type="submit">Buy</button>
+    </form>
+
+<script>
+    // password validation, you can submit only if the pass is at least 8 characters and contains only alphanumeric characters
+    document.querySelector('#submit').disabled = true;
+    document.querySelector('#stock').onkeyup = function() {
+        let stock = document.querySelector('#stock').value;
+
+        if (stock.length > 0){
+            document.querySelector('#submit').disabled = false;
+        }
+        else {
+            document.querySelector('#submit').disabled = true;
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Challenges
+{% endblock %}
+
+{% block main %}
+<table class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Challenge</th>
+        <th scope="col">Done</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Buy a stock</td>
+        <td style="color: green">Yes</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Sell a stock</td>
+        <td style="color: green">Yes</td>
+    </tr>
+
+    <tr>
+        <th scope="row">3</th>
+        <td>Get a profit</td>
+        <td style="color: red">No</td>
+    </tr>
+    <tr>
+        <th scope="row">4</th>
+        <td>Buy another stock</td>
+        <td style="color: red">No</td>
+    </tr>
+    </tbody>
+</table>
+{% endblock %}
